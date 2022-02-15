@@ -1,0 +1,40 @@
+Tech Stack: 
+
+Create React App creates a simple react app. By default it does 
+not include navigation, data loading, and etc. 
+
+Next.js is a framework that wraps up react. It builds a bunch of 
+functionality around it. These features include routing, server side rendering, 
+and hot module reload (better dev experience). Next makes it easy to use react to make
+a multi-page application. 
+
+.next file has a lot of behind the scene functionality that handles how next works
+
+The pages directory (you have to create this) contains a bunch of different react components. Every file we create as
+components will automaically be turned into its own webpage. 
+
+If you create a component name show.js, next will create a route for it like: localhost:3000/show
+
+To start next add script in package.json
+"dev": "next dev"
+
+
+index.js is used as root route in next --> localhost:3000/ (The Home Page)
+
+
+Why Next.js? 
+------------
+
+When we use create-react-app, that server took all of the react code we wrote and served it up into our browser. Our browser downlaoded all the code as a react app and executed that code. The key is the purpose of create-react-app was just to serve up some js code.
+
+Next uses server side rendering. Whenever someone accesses out nextjs server, the server will take our react app and rather then send all that js down to the browser, next will render the entire react app itself. In otherwords, all of our js code is being executed on the next server. The server then builds an HTML document and sends it down to the browser. The benefit is that user see content on the screen much more quickly. After the html is sent, then next will send our JS code as well. At this point the react app takes over. 
+
+The global var, window, is not availabe on node.js server (where next.js is running), it is only available in the browser. This is why we get an error when we define it. 
+
+When working with next, ensure code ran on the server is valid. 
+
+
+How does getInitialProps func work?
+This is a func exclusive to next js. When next loads a page, it will look a component and see if there is a getInitialProps func tied to it. It will render the getInitialProps function which we use to fetch our data. We then provide that data to the compenent as props (done on the server). The html then gets produced and sent to the browser.  
+
+
