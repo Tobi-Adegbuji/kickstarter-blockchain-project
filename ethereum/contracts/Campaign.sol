@@ -100,6 +100,17 @@ contract Campaign{
         req.complete = true;
     }
     
-    //How do we deploy this contract multiple times for different campaigns? 
+
+    function getSummary() public view returns (
+        uint,uint,uint,uint,address
+    ) {
+        return(
+            minimumContribution,
+            address(this).balance,
+            numRequests,
+            approversCount,
+            manager
+        ); 
+    }
 
 }

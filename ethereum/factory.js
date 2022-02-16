@@ -5,7 +5,7 @@ import CampaignFactory from "./build/CampaignFactory.json";
 
 const instance = new web3.eth.Contract(
   CampaignFactory.abi,
-  "0xbbc3d1b671D16fd306b9556Ed8529190c0753030"
+  "0x1715B9E91f81D5E1acc9Be5C1637f3F41674aC06"
 );
 
 //To get access of smart contract we can just import this file

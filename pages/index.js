@@ -8,22 +8,15 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import Layout from "../components/Layout";
+import Router from "next/router";
+import Link from "next/link";
+
+
 
 function CampaignIndex({ campaigns }) {
   const renderCampaigns = () => {
-    const example = [
-      "0xbbc3d1b671D16fd306b9556Ed8529190c0753030",
-      "0xbbc3d1b671D16fd306b9556Ed8529190c0753030",
-      "0xbbc3d1b671D16fd306b9556Ed8529190c0753030",
-      "0xbbc3d1b671D16fd306b9556Ed8529190c0753030",
-      "0xbbc3d1b671D16fd306b9556Ed8529190c0753030",
-      "0xbbc3d1b671D16fd306b9556Ed8529190c0753030",
-      "0xbbc3d1b671D16fd306b9556Ed8529190c0753030",
-      "0xbbc3d1b671D16fd306b9556Ed8529190c0753030",
-      "0xbbc3d1b671D16fd306b9556Ed8529190c0753030",
-    ];
-
-    const items = example.map((address) => {
+    
+    const items = campaigns.map((address) => {
       return (
         <Grid item xs={12} md={12}>
           <Card>
@@ -31,7 +24,11 @@ function CampaignIndex({ campaigns }) {
               <Typography noWrap>{address}</Typography>
             </CardContent>
             <CardActions>
-              <Button size="small">View Campaign</Button>
+            <Link href={`/campaigns/${address}`}>
+              <Typography color={"primary"} style={{"cursor": "pointer"}}>
+                View Campaign
+              </Typography>
+              </Link>
             </CardActions>
           </Card>
         </Grid>
@@ -61,7 +58,7 @@ function CampaignIndex({ campaigns }) {
             </Grid>
           </Grid>
           <Grid item xs={6}>
-            <Button size="large" startIcon={<AddBoxIcon />} variant="contained">
+            <Button onClick={() => Router.push("/campaigns/create")} size="large" startIcon={<AddBoxIcon />} variant="contained">
               Add Campaign
             </Button>
           </Grid>
