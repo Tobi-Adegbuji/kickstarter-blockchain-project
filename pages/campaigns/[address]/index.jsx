@@ -10,6 +10,8 @@ import Grid from "@mui/material/Grid";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import Router from "next/router";
 import Link from "next/link";
+import web3 from "../../../ethereum/web3";
+import ContributeForm from "../../../components/ContributeForm";
 
 function Show(props) {
   const renderCampaignInfo = () => {
@@ -32,16 +34,16 @@ function Show(props) {
         header: requestCount,
         title: "Number of Request",
         description:
-          "Number of pending request the manager has made to withdraw funds from contract balance.",
+          "Number of pending request the manager has made to withdraw funds from contract balance. ",
       },
       {
-        header: campaignBalance,
-        title: "Total Contributions",
+        header: web3.utils.fromWei(campaignBalance, 'ether'), 
+        title: "Total Contributions (ether)",
         description: "Total contribution donated by contributors.",
       },
       {
-        header: `${minContribution} wei`,
-        title: "Minimum Contribution",
+        header: `${minContribution}`,
+        title: "Minimum Contribution (wei)",
         description:
           "This is the minimum contibution needed to become a contributor.",
       },
@@ -98,7 +100,7 @@ function Show(props) {
               startIcon={<AddBoxIcon />}
               variant="contained"
             >
-              Donate
+              <ContributeForm/>
             </Button>
           </Grid>
         </Grid>

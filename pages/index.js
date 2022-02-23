@@ -25,7 +25,10 @@ function CampaignIndex({ campaigns }) {
             </CardContent>
             <CardActions>
             <Link href={`/campaigns/${address}`}>
-              <Typography color={"primary"} style={{"cursor": "pointer"}}>
+              <Typography 
+              color={"primary"} 
+              style={{"cursor": "pointer"}}
+              >
                 View Campaign
               </Typography>
               </Link>
